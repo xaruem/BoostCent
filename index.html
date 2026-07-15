@@ -98,23 +98,27 @@
     padding: 16px 32px;
     max-width: 1120px;
     margin: 0 auto;
+    gap: 12px;
   }
   .brand{
     display:flex;
     align-items:center;
     gap: 12px;
+    min-width: 0;
   }
   .brand img{
     width: 40px;
     height: 40px;
     border-radius: 10px;
     object-fit: cover;
+    flex-shrink: 0;
   }
   .brand-name{
     font-family:'Fraunces', serif;
     font-size: 21px;
     font-weight: 700;
     letter-spacing: 0.01em;
+    white-space: nowrap;
   }
   .brand-sub{
     font-size: 10px;
@@ -122,6 +126,13 @@
     letter-spacing: 0.14em;
     text-transform: uppercase;
     margin-top: -2px;
+    white-space: nowrap;
+  }
+  .header-actions{
+    display:flex;
+    gap:10px;
+    align-items:center;
+    flex-shrink: 0;
   }
   .btn{
     display:inline-flex;
@@ -218,8 +229,8 @@
     box-shadow: 0 0 0 1px var(--line-strong), 0 30px 60px -20px rgba(139,123,255,0.45);
   }
   .hero h1{
-    font-size: clamp(42px, 7vw, 74px);
-    line-height: 1.03;
+    font-size: clamp(36px, 9vw, 74px);
+    line-height: 1.08;
     background: linear-gradient(180deg, #ffffff 10%, #b9b6c4 100%);
     -webkit-background-clip: text;
     background-clip: text;
@@ -249,6 +260,7 @@
     font-weight: 500;
     color: var(--gold);
     letter-spacing: 0.01em;
+    padding: 0 8px;
   }
   .hero-typed .cursor{
     display:inline-block;
@@ -286,6 +298,7 @@
     margin-left:auto;
     margin-right:auto;
     background: rgba(255,255,255,0.015);
+    max-width: 100%;
   }
   .hero-tags span{
     padding: 8px 20px;
@@ -294,6 +307,7 @@
     text-transform: uppercase;
     color: var(--text-dim);
     position: relative;
+    white-space: nowrap;
   }
   .hero-tags span:not(:last-child)::after{
     content:"";
@@ -308,7 +322,7 @@
   section{ position: relative; padding: 96px 0; }
   .section-head{ text-align:center; max-width: 620px; margin: 0 auto 56px; }
   .section-head h2{
-    font-size: clamp(30px, 4vw, 42px);
+    font-size: clamp(28px, 7vw, 42px);
     margin-top: 14px;
     color: #fff;
   }
@@ -361,6 +375,7 @@
     transition: all .3s ease;
     position: relative;
     overflow: hidden;
+    min-width: 0;
   }
   .service-card::before{
     content:"";
@@ -437,7 +452,7 @@
     flex-wrap: wrap;
     background: radial-gradient(600px 200px at 20% 0%, rgba(139,123,255,0.08), transparent);
   }
-  .banner-left{ display:flex; align-items:center; gap: 20px; }
+  .banner-left{ display:flex; align-items:center; gap: 20px; min-width: 0; }
   .banner-icon{
     width: 56px; height:56px;
     border-radius: 16px;
@@ -497,7 +512,7 @@
     text-align:center;
     padding: 90px 0 70px;
   }
-  .cta-section h2{ font-size: clamp(30px, 4vw, 44px); color:#fff; }
+  .cta-section h2{ font-size: clamp(28px, 7vw, 44px); color:#fff; }
   .cta-section p{ color: var(--text-dim); margin-top:16px; font-size:15.5px; }
   .cta-section .btn{ margin-top: 34px; padding: 16px 36px; font-size: 15.5px; }
 
@@ -514,7 +529,7 @@
   }
   .footer-brand{ display:flex; align-items:center; gap:10px; color: var(--text-faint); font-size: 13px; }
   .footer-brand img{ width:26px; height:26px; border-radius:6px; }
-  .footer-links{ display:flex; gap: 24px; font-size: 13.5px; color: var(--text-dim); }
+  .footer-links{ display:flex; gap: 24px; font-size: 13.5px; color: var(--text-dim); flex-wrap: wrap; justify-content: center; }
   .footer-links a:hover{ color: var(--gold); }
 
   /* ---------- Stats ---------- */
@@ -559,6 +574,7 @@
     border: 1px solid var(--line);
     border-radius: 18px;
     padding: 28px 26px;
+    min-width: 0;
   }
   .review-stars{
     display:flex;
@@ -654,6 +670,63 @@
     .footer-inner{ flex-direction:column; text-align:center; }
     .connector-svg{ display:none; }
   }
+
+  /* ---------- Narrow phones (≤480px, tuned for ~358px) ---------- */
+  @media (max-width: 480px){
+    .wrap{ padding: 0 16px; }
+    .header-inner{ padding: 12px 16px; gap: 8px; }
+    .brand{ gap: 8px; }
+    .brand img{ width: 34px; height: 34px; }
+    .brand-name{ font-size: 17px; }
+    .brand-sub{ font-size: 8.5px; letter-spacing: 0.1em; }
+    .header-actions{ gap: 6px; }
+    .header-actions .btn{ padding: 8px 12px; font-size: 12px; }
+    .header-actions .btn-ghost{ display: none; } /* keep header from wrapping; admin link is repeated below hero */
+
+    .marquee{ padding: 10px 0; }
+    .marquee-track span{ font-size: 15px; padding: 0 16px; }
+
+    .hero{ padding: 72px 0 60px; }
+    .hero-logo{ width: 80px; height: 80px; border-radius: 18px; margin-bottom: 22px; }
+    .hero h1{ font-size: 34px; line-height: 1.12; }
+    .hero-sub{ font-size: 14.5px; margin-top: 18px; padding: 0 4px; }
+    .hero-typed{ font-size: 13.5px; margin-top: 16px; }
+    .hero-actions{ margin-top: 30px; gap: 10px; }
+    .hero-actions .btn{ width: 100%; justify-content: center; padding: 13px 20px; font-size: 14px; }
+    .hero-tags{ margin-top: 36px; }
+    .hero-tags span{ padding: 7px 12px; font-size: 10.5px; }
+
+    section{ padding: 60px 0; }
+    .section-head{ margin-bottom: 36px; }
+    .section-head h2{ font-size: 26px; }
+    .section-head p{ font-size: 14px; }
+
+    .service-card{ padding: 24px 20px; }
+    .service-card h3{ font-size: 20px; }
+
+    .banner{ padding: 24px 20px; }
+    .banner-left{ flex-direction: column; align-items: flex-start; gap: 14px; }
+    .banner p{ max-width: 100%; }
+    .status-pill{ align-self: flex-start; }
+
+    .why-item{ padding: 28px 20px; }
+
+    .stats{ grid-template-columns: repeat(2, 1fr); }
+    .stat-item{ padding: 22px 12px; }
+    .stat-num{ font-size: 30px; }
+    .stat-label{ font-size: 11px; }
+
+    .review-card{ padding: 22px 18px; }
+
+    .faq-item summary{ padding: 16px 18px; font-size: 14.5px; gap: 10px; }
+    .faq-answer{ padding: 0 18px 18px; font-size: 13.5px; }
+
+    .cta-section{ padding: 60px 0 50px; }
+    .cta-section .btn{ width: 100%; justify-content: center; padding: 14px 24px; }
+
+    .footer-links{ gap: 14px 18px; font-size: 12.5px; }
+    .footer-brand{ font-size: 12px; }
+  }
 </style>
 </head>
 <body>
@@ -667,7 +740,7 @@
         <div class="brand-sub">Boost Center Bot</div>
       </div>
     </div>
-    <div style="display:flex; gap:10px; align-items:center;">
+    <div class="header-actions">
       <a href="https://t.me/boostcent" class="btn btn-ghost" target="_blank" rel="noopener">Администратор</a>
       <a href="https://t.me/boostcent_bot" class="btn btn-primary" target="_blank" rel="noopener">Открыть бота</a>
     </div>
